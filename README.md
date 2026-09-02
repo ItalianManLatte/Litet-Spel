@@ -37,7 +37,7 @@ Game
 |
 |
 |
-|_______ Renderer'
+|_______ Renderer
 |       |    
 |	|_ e.g DX11
 |
