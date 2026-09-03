@@ -16,7 +16,7 @@ struct ProjectionInfo
 class CameraD3D11
 {
 private:
-	DirectX::XMFLOAT3 position = { 0.0f, 0.0f, 0.0f };
+	DirectX::XMFLOAT3 position = { 0.0f, 0.0f, -5.0f };
 	DirectX::XMFLOAT3 forward = { 0.0f, 0.0f, 1.0f };
 	DirectX::XMFLOAT3 right = { 1.0f, 0.0f, 0.0f };
 	DirectX::XMFLOAT3 up = { 0.0f, 1.0f, 0.0f };
@@ -53,8 +53,11 @@ public:
 	const DirectX::XMFLOAT3& GetRight() const;
 	const DirectX::XMFLOAT3& GetUp() const;
 
+	const ProjectionInfo& getProjectionInfo() const;
+
 	void UpdateInternalConstantBuffer(ID3D11DeviceContext* context);
 	ID3D11Buffer* GetConstantBuffer() const;
 
-	DirectX::XMFLOAT4X4 GetViewProjectionMatrix() const;
+	DirectX::XMFLOAT4X4 GetViewMatrix() const;
+	DirectX::XMFLOAT4X4 GetProjectionMatrix() const;
 };
