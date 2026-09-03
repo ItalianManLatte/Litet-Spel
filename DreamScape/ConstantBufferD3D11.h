@@ -1,11 +1,16 @@
 #pragma once
 
 #include <d3d11_4.h>
+#include <wrl/client.h>
+#include <iostream>
+
+
+using Microsoft::WRL::ComPtr;
 
 class ConstantBufferD3D11
 {
 private:
-	ID3D11Buffer* buffer = nullptr;
+	ComPtr <ID3D11Buffer> buffer = nullptr;
 	size_t bufferSize = 0;
 
 public:
@@ -17,6 +22,7 @@ public:
 	ConstantBufferD3D11(ConstantBufferD3D11&& other) noexcept; // Move constructor
 	ConstantBufferD3D11& operator=(ConstantBufferD3D11&& other) noexcept; // Move assignment operator
 
+	void CreateInitialData(ID3D11Device* device, size_t byteSize, void* initialData = nullptr);
 	void Initialize(ID3D11Device* device, size_t byteSize, void* initialData = nullptr);
 
 	size_t GetSize() const;

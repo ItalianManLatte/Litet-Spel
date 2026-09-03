@@ -1,15 +1,20 @@
 #pragma once
+#pragma once
 
 #include <d3d11_4.h>
 
 #include <vector>
+#include <wrl/client.h>
+#include <iostream>
+
+using Microsoft::WRL::ComPtr;
 
 class DepthBufferD3D11
 {
 private:
-	ID3D11Texture2D* texture = nullptr;
-	std::vector<ID3D11DepthStencilView*> depthStencilViews;
-	ID3D11ShaderResourceView* srv = nullptr;
+	ComPtr <ID3D11Texture2D> texture = nullptr;
+	std::vector< ComPtr <ID3D11DepthStencilView>> depthStencilViews;
+	ComPtr <ID3D11ShaderResourceView> srv = nullptr;
 
 public:
 	DepthBufferD3D11() = default;
@@ -20,6 +25,7 @@ public:
 	DepthBufferD3D11(DepthBufferD3D11&& other) = delete;
 	DepthBufferD3D11& operator=(DepthBufferD3D11&& other) = delete;
 
+	
 	void Initialize(ID3D11Device* device, UINT width, UINT height,
 		bool hasSRV = false, UINT arraySize = 1);
 
