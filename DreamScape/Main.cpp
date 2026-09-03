@@ -11,7 +11,6 @@ Acknowledgement:
 	Based on the previous work of Joakim Ståhle-Nilsson.
 */
 
-
 //IMPORTING HEADER FILES --------------------------------------------------------
 #include <Windows.h> //Header to access the main Windows API.
 #include <iostream> //Header to access the standard input/output.
