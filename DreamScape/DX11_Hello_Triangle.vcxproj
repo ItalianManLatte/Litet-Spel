@@ -160,8 +160,10 @@
     <ClInclude Include="ShaderD3D11.h" />
     <ClInclude Include="ShaderResourceTextureD3D11.h" />
     <ClInclude Include="SpotLightCollectionD3D11.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="StructuredBufferD3D11.h" />
     <ClInclude Include="SubMeshD3D11.h" />
+    <ClInclude Include="tiny_obj_loader.h" />
     <ClInclude Include="VertexBufferD3D11.h" />
     <ClInclude Include="WindowHelper.h" />
   </ItemGroup>
