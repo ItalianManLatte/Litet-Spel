@@ -3,11 +3,16 @@
 #include <cstdint>
 
 #include <d3d11_4.h>
+#include <wrl/client.h>
+#include <iostream>
+
+using Microsoft::WRL::ComPtr;
+
 
 class IndexBufferD3D11
 {
 private:
-	ID3D11Buffer* buffer = nullptr;
+	ComPtr <ID3D11Buffer> buffer = nullptr;
 	size_t nrOfIndices = 0;
 
 public:
@@ -20,6 +25,7 @@ public:
 	IndexBufferD3D11& operator=(IndexBufferD3D11&& other) = delete;
 
 	void Initialize(ID3D11Device* device, size_t nrOfIndicesInBuffer, uint32_t* indexData);
+	void InitializeData(ID3D11Device* device, size_t nrOfIndicesInBuffer, uint32_t* indexData);
 
 	size_t GetNrOfIndices() const;
 	ID3D11Buffer* GetBuffer() const;

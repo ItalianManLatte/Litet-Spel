@@ -2,10 +2,15 @@
 
 #include <d3d11_4.h>
 
+#include <wrl/client.h>
+#include <iostream>
+
+using Microsoft::WRL::ComPtr;
+
 class VertexBufferD3D11
 {
 private:
-	ID3D11Buffer* buffer = nullptr;
+	ComPtr <ID3D11Buffer> buffer = nullptr;
 	UINT nrOfVertices = 0;
 	UINT vertexSize = 0;
 
@@ -20,6 +25,9 @@ public:
 	VertexBufferD3D11& operator=(VertexBufferD3D11&& other) = delete;
 
 	void Initialize(ID3D11Device* device, UINT sizeOfVertex,
+		UINT nrOfVerticesInBuffer, void* vertexData);
+
+	void InitializeData(ID3D11Device* device, UINT sizeOfVertex,
 		UINT nrOfVerticesInBuffer, void* vertexData);
 
 	UINT GetNrOfVertices() const;
