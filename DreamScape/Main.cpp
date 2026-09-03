@@ -110,8 +110,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstnace,	_In_opt_ HINSTANCE hPrevInstance
 	}
 
 	sampler->Release();
-	textureSRV->Release();
-	texture->Release();
+	object.textureSRV->Release();
+	object.vertexBuffer->Release();
+	object.indexBuffer->Release();
+	object.materialBuffer->Release();
 	inputLayout->Release();
 	pShader->Release();
 	vShader->Release();

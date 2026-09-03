@@ -1,4 +1,7 @@
-﻿//IMPORTING HEADER FILES --------------------------------------------------------
+﻿#define TINYOBJLOADER_IMPLEMENTATION
+#define STB_IMAGE_IMPLEMENTATION
+
+//IMPORTING HEADER FILES --------------------------------------------------------
 #include "PipelineHelper.h"
 #include <string> //Header to access the standar string class libraries.
 #include <fstream> //Header to acess the standard library for reading/writing external files.
@@ -256,19 +259,8 @@ bool LoadTextureFromPNG(ID3D11Device* device, const std::string& filename, ID3D1
 	return !FAILED(hr);
 }
 
-bool CreateTextureSRVAndSampler(ID3D11Device* device, ID3D11Texture2D* texture,
-	ID3D11ShaderResourceView*& srv, ID3D11SamplerState*& sampler)
+bool CreateSampler(ID3D11Device* device, ID3D11SamplerState*& sampler)
 {
-
-	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
-	srvDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
-	srvDesc.Texture2D.MipLevels = 1;
-
-	HRESULT hr = device->CreateShaderResourceView(texture, &srvDesc, &srv);
-	if (FAILED(hr))
-		return false;
-
 	D3D11_SAMPLER_DESC sampDesc = {};
 	sampDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
 	sampDesc.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
@@ -277,7 +269,7 @@ bool CreateTextureSRVAndSampler(ID3D11Device* device, ID3D11Texture2D* texture,
 	sampDesc.MinLOD = 0;
 	sampDesc.MaxLOD = D3D11_FLOAT32_MAX;
 
-	hr = device->CreateSamplerState(&sampDesc, &sampler);
+	HRESULT hr = device->CreateSamplerState(&sampDesc, &sampler);
 	return !FAILED(hr);
 }
 
@@ -306,9 +298,11 @@ bool SetupPipeline(ID3D11Device* device, RenderObject& object, ID3D11VertexShade
 		return false;
 	}
 
-	if (!CreateTextureSRVAndSampler(device, textureBuffer, textureSRV, sampler)) {
-		std::cerr << "Error createing SRV or Sampler";
+	if (!CreateSampler(device, sampler))
+	{
+		std::cerr << "Error creating sampler" << std::endl;
 		return false;
+
 	}
 	
 	return true;
