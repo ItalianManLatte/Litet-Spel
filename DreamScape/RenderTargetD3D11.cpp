@@ -1,17 +1,12 @@
 #include "RenderTargetD3D11.h"
 
-/*
-ID3D11Texture2D* texture = nullptr; //backbuffer
-	ID3D11RenderTargetView* rtv = nullptr;
-	ID3D11ShaderResourceView* srv = nullptr;
-*/
+
 
 
 RenderTargetD3D11::~RenderTargetD3D11()
 {
 }
-void RenderTargetD3D11::Initialize(ID3D11Device* device, UINT width, UINT height,
-	DXGI_FORMAT format = DXGI_FORMAT_R8G8B8A8_UNORM, bool hasSRV = false) {
+void RenderTargetD3D11::Initialize(ID3D11Device* device, UINT width, UINT height, DXGI_FORMAT format, bool hasSRV) {
 
 	texture.Reset();
 	rtv.Reset();

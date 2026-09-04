@@ -1,12 +1,20 @@
 #pragma once
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 #include <d3d11_4.h>
+#include <wrl/client.h>
+#include <iostream>
+
+
+using Microsoft::WRL::ComPtr;
+
 
 class ShaderResourceTextureD3D11
 {
 private:
-	ID3D11Texture2D* texture = nullptr;
-	ID3D11ShaderResourceView* srv = nullptr;
+	ComPtr <ID3D11Texture2D> texture = nullptr;
+	ComPtr <ID3D11ShaderResourceView> srv = nullptr;
 
 public:
 	ShaderResourceTextureD3D11() = default;

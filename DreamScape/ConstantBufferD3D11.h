@@ -20,7 +20,7 @@ public:
 	ConstantBufferD3D11(const ConstantBufferD3D11& other) = delete;
 	ConstantBufferD3D11& operator=(const ConstantBufferD3D11& other) = delete;
 	ConstantBufferD3D11(ConstantBufferD3D11&& other) noexcept; // Move constructor
-	ConstantBufferD3D11& operator=(ConstantBufferD3D11&& other) noexcept; // Move assignment operator
+	//ConstantBufferD3D11& operator=(ConstantBufferD3D11&& other) noexcept; // Move assignment operator
 
 	void CreateInitialData(ID3D11Device* device, size_t byteSize, void* initialData = nullptr);
 	void Initialize(ID3D11Device* device, size_t byteSize, void* initialData = nullptr);

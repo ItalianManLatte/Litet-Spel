@@ -1,12 +1,18 @@
 #pragma once
 
 #include <d3d11_4.h>
+#include <wrl/client.h>
+#include <iostream>
+
+
+using Microsoft::WRL::ComPtr;
+
 
 class StructuredBufferD3D11
 {
 private:
-	ID3D11Buffer* buffer = nullptr;
-	ID3D11ShaderResourceView* srv = nullptr;
+	ComPtr <ID3D11Buffer> buffer = nullptr;
+	ComPtr <ID3D11ShaderResourceView> srv = nullptr;
 	UINT elementSize = 0;
 	size_t nrOfElements = 0;
 

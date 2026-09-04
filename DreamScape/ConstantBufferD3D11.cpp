@@ -15,10 +15,10 @@ ConstantBufferD3D11::ConstantBufferD3D11(ConstantBufferD3D11&& other) noexcept
 {
 }
 
-ConstantBufferD3D11& ConstantBufferD3D11::operator=(ConstantBufferD3D11&& other) noexcept
-{
-	// TODO: insert return statement here
-}
+//ConstantBufferD3D11& ConstantBufferD3D11::operator=(ConstantBufferD3D11&& other) noexcept
+//{
+//	// TODO: insert return statement here
+//}
 
 void ConstantBufferD3D11::CreateInitialData(ID3D11Device* device, size_t byteSize, void* initialData)
 {
