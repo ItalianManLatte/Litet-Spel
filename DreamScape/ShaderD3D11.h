@@ -17,6 +17,8 @@ class ShaderD3D11
 private:
 
 	ShaderType type;
+	const void* shaderByteData;
+	size_t shaderByteSize;
 
 	union
 	{
