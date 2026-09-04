@@ -1,13 +1,18 @@
-#pragma once
+     #pragma once
 
 #include <d3d11_4.h>
+#include <wrl/client.h>
+#include <iostream>
+
+
+using Microsoft::WRL::ComPtr;
 
 class RenderTargetD3D11
 {
 private:
-	ID3D11Texture2D* texture = nullptr;
-	ID3D11RenderTargetView* rtv = nullptr;
-	ID3D11ShaderResourceView* srv = nullptr;
+	ComPtr <ID3D11Texture2D> texture = nullptr; //backbuffer
+	ComPtr <ID3D11RenderTargetView> rtv = nullptr;
+	ComPtr <ID3D11ShaderResourceView> srv = nullptr;
 
 public:
 	RenderTargetD3D11() = default;
